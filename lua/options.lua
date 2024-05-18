@@ -21,7 +21,8 @@ opt.mouse = "a"
 
 -- Numbers
 opt.number = true
-opt.ruler = false
+opt.ruler = true
+opt.relativenumber = true
 
 opt.signcolumn = "yes"
 opt.splitbelow = true

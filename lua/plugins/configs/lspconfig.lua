@@ -51,6 +51,7 @@ capabilities.textDocument.completion.completionItem = {
     },
   },
 }
+
 -- Setup language servers.
 local lspconfig = require "lspconfig"
 
@@ -63,8 +64,32 @@ lspconfig.lua_ls.setup {
   },
 }
 
+lspconfig.rust_analyzer.setup {
+  settings = {
+      ["rust-analyzer"] = {
+          cargo = {
+              allFeatures = true,
+          },
+          checkOnSave = {
+              command = "clippy",
+          },
+      },
+  },
+  on_attach = function(client, bufnr)
+      -- Your on_attach function here
+  end,
+  flags = {
+      debounce_text_changes = 150,
+  }
+}
+
 -- setup multiple servers with same default options
-local servers = { "tsserver", "html", "cssls" }
+local servers = {
+  "rust_analyzer",
+  "tsserver",
+  "html",
+  "cssls"
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
