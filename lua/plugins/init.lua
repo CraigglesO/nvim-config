@@ -329,3 +329,6 @@ local plugins = {
 
 require("lazy").setup(plugins, require "plugins.configs.lazy")
 
+-- Consider adding:
+-- https://github.com/dgox16/devicon-colorscheme.nvim
+-- https://github.com/norcalli/nvim-colorizer.lua
